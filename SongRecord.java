@@ -1,4 +1,14 @@
-package hashingAndDocumentation;
+/**
+* SongProgram.java
+* @author Anthony Madrigal-Murillo
+* @since 4/14/25
+* This class is responsible for defining the SongRecord object. The SongRecord object holds data such
+* as valence, year, acousticness, artists, danceability, durationsMs, energy and much more. This class
+* contains the setters and getters for the SongRecord object. This program also contains a method to
+* parse data from an CSV file.
+*/
+
+//package hashingAndDocumentation;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Objects;
@@ -49,6 +59,11 @@ public class SongRecord {
     }
 
     // Constructor that takes a CSV string and parses it
+    // Preconditions: Program should have access to CSV strings.
+    // Postconditions: The program parses the data in CSV to be entered into SongRecord object.
+    // @param data: data is the string line of song data that is parsed into the object.
+    // Returns: The program does not return anything.
+    // Exceptions: The program throws no exceptions.
     public SongRecord(String data) {
         String[] fields = data.split(","); // Assuming comma-separated values
         
@@ -139,6 +154,8 @@ public class SongRecord {
     public void setTempo(double tempo) { this.tempo = tempo; }
 
     // toString method
+    // Preconditions: SongRecord object should have all data types full of correct song data.
+    // Postconditions: The program outputs all stored data on a specific songRecord object.
     @Override
     public String toString() {
         return "SongRecord{" +
@@ -165,6 +182,10 @@ public class SongRecord {
     }
 
     // equals method
+    // Preconditions: SongRecord objects being compared should have all data filled in correctly.
+    // Postconditions: The program returns true if all data between songRecord objects are equal.
+    // @param o: o an object to be compared
+    // Returns: The program returns a boolean.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -191,6 +212,9 @@ public class SongRecord {
                 Double.compare(that.tempo, tempo) == 0;
     }
 
+    // hashCode method
+    // Preconditions: SongRecord objects should have all data filled in correctly.
+    // Postconditions: The program creates a hashcode using the data in each songRecord object.
     @Override
     public int hashCode() {
         return Objects.hash(valence, year, acousticness, artists, danceability, durationMs, energy, explicit, id,

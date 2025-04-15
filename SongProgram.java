@@ -1,5 +1,13 @@
-package hashingAndDocumentation;//comment this out if you do not need a package
+/**
+* SongProgram.java
+* @author Anthony Madrigal-Murillo
+* @since 4/14/25
+* This class is responsible for the GUI and basic version of the program. This class contains 
+* the instructions needed to load the song data from the data.csv file and is responsible 
+* for finding and outputing the correct song given a recognized song ID.
+*/
 
+//package hashingAndDocumentation;//comment this out if you do not need a package
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,6 +32,14 @@ public class SongProgram {
     }
 
     // Method to load songs from a CSV file
+    // Preconditions: the parameter filePath should be a CSV file that the program has
+    // access to.
+    // Postconditions: the program correctly reads all lines of the CSV and stores the songs
+    // as song objects.
+    // @param filePath, filePath is used to direct the program to the CSV file that contains
+    // data on the songs being used.
+    // Returns: The program does not return anything.
+    // Exceptions: The program will throw an error if the CSV file could not be read.
     public void loadSongsFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -45,11 +61,22 @@ public class SongProgram {
     }
 
     // Method to retrieve a SongRecord by ID
+    // Preconditions: the parameter id should be a recognizable id that the program has
+    // is familiar with.
+    // Postconditions: The program returns the ID of a song.
+    // @param id, id is used to direct the program to the record of a song
+    // Returns: The program returns a SongRecord of a song.
+    // Exceptions: The program throws no exceptions.
     public SongRecord getSongById(String id) {
         return songMap.get(id);
     }
 
     // Method to print all songs (for debugging or display purposes)
+    // Preconditions: SongRecord should be full of songs.
+    // Postconditions: The program prints all the values of songs in SongRecord.
+    // Method has no parameters.
+    // Returns: The program does not return anything.
+    // Exceptions: The program throws no exceptions.
     public void printAllSongs() {
         for (SongRecord song : songMap.values()) {
             System.out.println(song);
@@ -57,6 +84,11 @@ public class SongProgram {
     }
     
     // GUI method to search for a song by ID
+    // Preconditions: Song IDs should be full and recognizable by the program.
+    // Postconditions: The program produces a usable GUI for searching for songs by id.
+    // Method has no parameters.
+    // Returns: The program does not return anything.
+    // Exceptions: The program throws no exceptions.
     public void openSearchGui() {
         // Create the main frame
         JFrame frame = new JFrame("Song Lookup");
@@ -103,6 +135,11 @@ public class SongProgram {
     }
 
     // Main method to demonstrate functionality and open GUI
+    // Preconditions: Song IDs should be full and recognizable by the program.
+    // Postconditions: The program opens its usable GUI.
+    // Method has no parameters.
+    // Returns: The program does not return anything.
+    // Exceptions: The program throws no exceptions.
     public static void main2(String[] args) {
         SongProgram program = new SongProgram();
 
@@ -114,7 +151,13 @@ public class SongProgram {
         program.openSearchGui();
     }
 
-    // Main method to demonstrate functionality
+    // Main method to demonstrate functionality not using a GUI
+    // Preconditions: Song IDs should be full and recognizable by the program.
+    // Postconditions: The program functions in basic console text using song ids to display
+    // complete data about songs.
+    // Method has no parameters.
+    // Returns: The program does not return anything.
+    // Exceptions: The program throws no exceptions.
     public static void main(String[] args) {
         SongProgram program = new SongProgram();
 
@@ -132,7 +175,7 @@ public class SongProgram {
         }
 
         // Print all songs
-        program.printAllSongs();
+        //program.printAllSongs();
     }
 }
 
